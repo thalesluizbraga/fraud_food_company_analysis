@@ -1,16 +1,22 @@
--- Calcule quanto o índice geral de MATCH seria (na tabela biometry) se 
--- aumentássemos a similaridade mínima do MATCH para 0.90.
+-- calcule quanto o índice geral de MATCH seria 
+-- (na tabela biometry) se aumentássemos a similaridade mínima
+--do MATCH para 0.90. 
 
+with t1 as(
+    select 
+        b.Session_ID,
+        case 
+            when be.Similarity >= 0.9 then 'MATCH' 
+            when be.status = 'PROVIDER FAILED' then 'PROVIDER FAILED'
+            else 'NOT_MATCH' 
+            end as updated_status
+        
+    from biometry as b
+    left join biometry_execution as be on b.Session_ID = be.Session_ID
+)
 
 select 
-    count(bio.session_id) * 1.0 / 
-        (select count(Session_ID) from biometry_execution) as indice 
+    (select count(session_id) from t1 where updated_status = 'NOT_MATCH') * 1.0 /
+    count(session_id) as index_session
 
-
-
-from biometry as bio
-inner join biometry_execution as bio_exec on bio.Session_ID = bio_exec.Session_ID
-
-where 
-    bio_exec.Similarity >= 0.9
-    and bio.status = 'MATCH' 
+from t1
