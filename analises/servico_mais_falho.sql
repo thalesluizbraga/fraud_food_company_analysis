@@ -4,6 +4,9 @@ select
 
 
 from biometry_execution
-where status = 'PROVIDER_FAILED'
-group by provider 
-order by count(session_id) desc
+where 
+    status = 'PROVIDER_FAILED'
+group by 
+    provider 
+order by 
+    count(session_id) desc
