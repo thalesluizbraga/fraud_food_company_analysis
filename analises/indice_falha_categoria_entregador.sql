@@ -1,9 +1,0 @@
-select 
-    d.Category,
-    count(d.Driver_ID) as count_drivers
-
-from biometry as b
-left join drivers as d on b.Driver_ID = d.Driver_ID
-where status = 'NOT_MATCH'
-group by Category
-order by count(d.Driver_ID) desc

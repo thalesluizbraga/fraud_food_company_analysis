@@ -1,3 +1,7 @@
+-- Query que retona a comparacao dos indices de match com similaridade acima de 0.8 e 0.9
+
+-- Tabela que calcula a similaridade maxima, agrupando por session_id
+
 WITH tb_similaridade_max AS (
     SELECT
         session_id,
@@ -7,6 +11,8 @@ WITH tb_similaridade_max AS (
     GROUP BY
         session_id
 ),
+
+-- Tabela que calcula a similaridade acima de 0.8
 
 tb_similaridade_real AS (
     SELECT 
@@ -27,14 +33,15 @@ tb_similaridade_real AS (
 
 ),
 
+-- Tabela que calcula o indice de match para sessoes com similaridade superior a 0.8
 
 tb_indice_similaridade_real as (
     SELECT
         similaridade,
         count_session_id,
         (select count(distinct Session_ID) from biometry_execution) as total_sessoes,
-        1.0 * count_session_id /  (select count(distinct Session_ID) from biometry_execution) as indice_similaridade_real,
-        'similaridade_real' as similaridade_real
+        1.0 * count_session_id /  (select count(distinct Session_ID) from biometry_execution) as indice_similaridade,
+        'similaridade_real' as classificacao
         
 
     FROM 
@@ -42,6 +49,8 @@ tb_indice_similaridade_real as (
     GROUP BY
         similaridade
 ),
+
+-- Tabela que calcula a similaridade acima de 0.9
 
 tb_similaridade_projetada AS (
     SELECT 
@@ -61,13 +70,15 @@ tb_similaridade_projetada AS (
         END
 ),
 
+-- Tabela que calcula o indice de match para sessoes com similaridade superior a 0.9
+
 tb_indice_similaridade_projetada as (
     SELECT
         similaridade,
         count_session_id,
         (select count(distinct Session_ID) from biometry_execution) as total_sessoes,
-        1.0 * count_session_id /  (select count(distinct Session_ID) from biometry_execution) as indice_similaridade_projetada,
-        'similaridade_projetada' as similaridade_projetada
+        1.0 * count_session_id /  (select count(distinct Session_ID) from biometry_execution) as indice_similaridade,
+        'similaridade_projetada' as classificacao
         
 
     FROM 
@@ -75,6 +86,8 @@ tb_indice_similaridade_projetada as (
     GROUP BY
         similaridade
 )
+
+-- Tabela que faz a juncao da tabela de indice de match superior a 0.8 com a tabela de indice de match superior a 0.9
 
 select * from tb_indice_similaridade_real
 

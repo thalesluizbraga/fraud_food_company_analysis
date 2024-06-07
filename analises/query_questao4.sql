@@ -1,10 +1,4 @@
--- Você diria que há alguma relação entre volume de pedidos cancelados 
--- (status = CANCELLED) de um entregador e o status final do processo
--- de identificação biométrica dele? Justifique sua resposta.
-
-
--- entregas canceladas sobre o total de entregas
--- entregas de entregadores not match sobre o total de entregas canceladas
+-- Query que retorna a quantidade de ordens canceladas e a quantidade de drivers
 
 select 
     b.status,

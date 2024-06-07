@@ -1,4 +1,4 @@
--- query que agrupa por dia a quantidade de sessoes abertaas por driver. Entao, os dias com maior contagem, tiveram mais solicitaçoes abertas pelo mesmo driver
+-- Query que agrupa por dia a quantidade de sessoes abertaas por driver. Entao, os dias com maior contagem, tiveram mais solicitaçoes abertas pelo mesmo driver
 
 select 
     b.Driver_ID,
