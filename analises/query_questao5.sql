@@ -21,7 +21,7 @@ tb_media_acessos_negados_por_dia AS (
     SELECT
         Event_Dt,
         acessos_negados,
-        AVG(acessos_negados) OVER () AS media_acessos
+        round(AVG(acessos_negados) OVER (),0) AS media_acessos
     FROM 
         tb_acesso_negados_por_dia
 )

@@ -3,7 +3,8 @@
 select 
     b.status,
     count(distinct(o.Order_ID)) as count_order,
-    count(distinct(d.Driver_ID)) as count_drivers
+    count(distinct(d.Driver_ID)) as count_drivers,
+    1.0* count(distinct(o.Order_ID)) / count(distinct(d.Driver_ID)) as pedidos_cancelados_por_driver
 
 from 
     orders as o
@@ -17,4 +18,4 @@ where
 group by 
     b.status
 order by 
-    count(order_id) desc 
+    1.0* count(distinct(o.Order_ID)) / count(distinct(d.Driver_ID)) desc

@@ -21,7 +21,7 @@ tb_similaridade_real AS (
             WHEN max_similaridade > 0.8 THEN 'match'
             WHEN max_similaridade IS NULL THEN 'provider_failed'
             ELSE 'not_match' 
-        END AS similaridade,
+        END AS status,
         'similaridade_real' AS similaridade_real
     FROM 
         tb_similaridade_max
@@ -37,7 +37,7 @@ tb_similaridade_real AS (
 
 tb_indice_similaridade_real as (
     SELECT
-        similaridade,
+        status,
         count_session_id,
         (select count(distinct Session_ID) from biometry_execution) as total_sessoes,
         1.0 * count_session_id /  (select count(distinct Session_ID) from biometry_execution) as indice_similaridade,
@@ -47,7 +47,7 @@ tb_indice_similaridade_real as (
     FROM 
         tb_similaridade_real
     GROUP BY
-        similaridade
+        status
 ),
 
 -- Tabela que calcula a similaridade acima de 0.9
@@ -59,7 +59,7 @@ tb_similaridade_projetada AS (
             WHEN max_similaridade > 0.9 THEN 'match'
             WHEN max_similaridade IS NULL THEN 'provider_failed'
             ELSE 'not_match' 
-        END AS similaridade,
+        END AS status,
         'projetada' AS tipo
     FROM 
         tb_similaridade_max
@@ -74,7 +74,7 @@ tb_similaridade_projetada AS (
 
 tb_indice_similaridade_projetada as (
     SELECT
-        similaridade,
+        status,
         count_session_id,
         (select count(distinct Session_ID) from biometry_execution) as total_sessoes,
         1.0 * count_session_id /  (select count(distinct Session_ID) from biometry_execution) as indice_similaridade,
@@ -84,7 +84,7 @@ tb_indice_similaridade_projetada as (
     FROM 
         tb_similaridade_projetada
     GROUP BY
-        similaridade
+        status
 )
 
 -- Tabela que faz a juncao da tabela de indice de match superior a 0.8 com a tabela de indice de match superior a 0.9
