@@ -32,5 +32,9 @@ SELECT
     media_acessos
 FROM 
     tb_media_acessos_negados_por_dia
+
+where 
+    acessos_negados > media_acessos
 ORDER BY 
     Event_Dt ASC;
+

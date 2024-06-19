@@ -9,7 +9,7 @@ from
 left join 
     drivers as d on b.Driver_ID = d.Driver_ID
 where 
-    status = 'NOT_MATCH'
+    b.status = 'NOT_MATCH'
 group by 
     category
 order by 
