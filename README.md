@@ -1,8 +1,38 @@
-# Estudo IF
+To prevent some inappropriate behaviors from our delivery personnel, we have adopted a biometric identification solution. When the delivery person sends us biometric information, this data can go through up to 3 algorithms to check for a ‘MATCH’ between the information sent by the delivery person and the reference we have in our database. If the algorithm of Service A fails for some reason, we send it to Service B, and if it fails, we send it to Service C. Services B and C are what we call here fallback or, in plain English, our ‘Plan B’.
 
-v1 -- crud em sqlite em um unico arquivo para fazer banco e primeiras analises
+If this MATCH happens in any of the 3 services, the delivery person is allowed to continue working. If not, they proceed to another analysis flow. The ‘MATCH’ is attributed to that session if the similarity calculated by the algorithm between the collected information and the reference is greater than 0.80.
 
-v2 -- criar postgre, tipar dados, passar as tabelas em loop 
+In the table called biometry, we have one biometric session per row with the final result of the entire biometric validation process, whether it ended in service A, B, or C - these rows contain the final decision about the delivery person, who is allowed to work only if the column status = MATCH. In the biometry_execution table, we have up to 3 rows per session, informing the status returned from each of the services A, B, and C.
 
-v3 -- testes, validacao schema
+Answer at least 3 of the following questions:
 
+a) Which service fails the most? (status = PROVIDER_FAILED)
+b) Which category of delivery person has the highest failure rate in biometric identification? (status = NOT_MATCH)
+c) Calculate what the overall MATCH rate would be (in the biometry table) if we increased the minimum similarity of the MATCH to 0.90.
+d) Would you say there is any relationship between the volume of canceled orders (status = CANCELLED) by a delivery person and their final biometric identification status? Justify your answer.
+e) On which days did we likely see an increase in the inappropriate behavior of “account loan”?
+
+Metadata:
+Tables: biometry | biometry_execution | orders | drivers
+
+Columns:
+Session_Dt: Date the biometric session ended
+Event_Dt: Date the provider completed the analysis
+Order_Dt: Date of the order
+Driver_ID: Unique key – delivery person ID
+Session_ID: Unique key - biometric session
+Session_ID: Unique key - biometric session
+Order_ID: Unique key – order ID
+Category: Delivery person category according to segmentation
+Driver_ID: Unique key – delivery person ID
+Similarity: % similarity between collected information and reference
+Driver_ID: Unique key – delivery person ID
+Modal: Mode of transport used by the delivery person
+Status: Final status of the biometric process
+Status: Status provided by the provider
+Status: Indicates whether the order was completed or canceled
+Register_Dt: Date the delivery person registered to work with us
+Action: Action to be taken with the driver [OK, FLUXO_STACK]
+Provider: Biometric Solution Provider [A, B, C]
+Value: Total amount paid by the customer for the order
+Device_ID: Unique key – delivery person’s device
