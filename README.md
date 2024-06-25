@@ -15,24 +15,43 @@ e) On which days did we likely see an increase in the inappropriate behavior of 
 Metadata:
 Tables: biometry | biometry_execution | orders | drivers
 
-Columns:
-Session_Dt: Date the biometric session ended
-Event_Dt: Date the provider completed the analysis
-Order_Dt: Date of the order
-Driver_ID: Unique key – delivery person ID
-Session_ID: Unique key - biometric session
-Session_ID: Unique key - biometric session
-Order_ID: Unique key – order ID
-Category: Delivery person category according to segmentation
-Driver_ID: Unique key – delivery person ID
-Similarity: % similarity between collected information and reference
-Driver_ID: Unique key – delivery person ID
-Modal: Mode of transport used by the delivery person
-Status: Final status of the biometric process
-Status: Status provided by the provider
-Status: Indicates whether the order was completed or canceled
-Register_Dt: Date the delivery person registered to work with us
-Action: Action to be taken with the driver [OK, FLUXO_STACK]
-Provider: Biometric Solution Provider [A, B, C]
-Value: Total amount paid by the customer for the order
-Device_ID: Unique key – delivery person’s device
+Table: biometry
+
+| Column      | Description                                                 |
+|-------------|-------------------------------------------------------------|
+| Session_Dt  | Date the biometric session ended                            |
+| Driver_ID   | Unique key – delivery person ID                             |
+| Session_ID  | Unique key - biometric session                              |
+| Similarity  | % similarity between collected information and reference    |
+| Status      | Final status of the biometric process                       |
+
+Table: biometry_execution
+
+| Column     | Description                                       |
+|------------|---------------------------------------------------|
+| Event_Dt   | Date the provider completed the analysis          |
+| Driver_ID  | Unique key – delivery person ID                   |
+| Session_ID | Unique key - biometric session                    |
+| Status     | Status provided by the provider                   |
+| Provider   | Biometric Solution Provider [A, B, C]             |
+
+Table: orders
+
+| Column      | Description                                      |
+|-------------|--------------------------------------------------|
+| Order_Dt    | Date of the order                                |
+| Order_ID    | Unique key – order ID                            |
+| Driver_ID   | Unique key – delivery person ID                  |
+| Category    | Delivery person category according to segmentation |
+| Modal       | Mode of transport used by the delivery person    |
+| Status      | Indicates whether the order was completed or canceled |
+| Value       | Total amount paid by the customer for the order  |
+
+Table: drivers
+
+| Column      | Description                                      |
+|-------------|--------------------------------------------------|
+| Driver_ID   | Unique key – delivery person ID                  |
+| Register_Dt | Date the delivery person registered to work with us |
+| Action      | Action to be taken with the driver [OK, FLUXO_STACK] |
+| Device_ID   | Unique key – delivery person’s device            |
