@@ -1,6 +1,9 @@
 # Created by https://www.toptal.com/developers/gitignore/api/python
 # Edit at https://www.toptal.com/developers/gitignore?templates=python
 
+Apresentação de Teste de SQL .pptx
+Teste de SQL - versão2024.pdf
+
 ### Python ###
 # Byte-compiled / optimized / DLL files
 __pycache__/

@@ -1,10 +1,12 @@
+I'm working as a BI analyst for the fraud prevention department in a tech food company.
+
 To prevent some inappropriate behaviors from our delivery personnel, we have adopted a biometric identification solution. When the delivery person sends us biometric information, this data can go through up to 3 algorithms to check for a ‘MATCH’ between the information sent by the delivery person and the reference we have in our database. If the algorithm of Service A fails for some reason, we send it to Service B, and if it fails, we send it to Service C. Services B and C are what we call here fallback or, in plain English, our ‘Plan B’.
 
 If this MATCH happens in any of the 3 services, the delivery person is allowed to continue working. If not, they proceed to another analysis flow. The ‘MATCH’ is attributed to that session if the similarity calculated by the algorithm between the collected information and the reference is greater than 0.80.
 
 In the table called biometry, we have one biometric session per row with the final result of the entire biometric validation process, whether it ended in service A, B, or C - these rows contain the final decision about the delivery person, who is allowed to work only if the column status = MATCH. In the biometry_execution table, we have up to 3 rows per session, informing the status returned from each of the services A, B, and C.
 
-Answer at least 3 of the following questions:
+Based on this scenario, some analysis are demanded from. They are related below:
 
 a) Which service fails the most? (status = PROVIDER_FAILED)
 b) Which category of delivery person has the highest failure rate in biometric identification? (status = NOT_MATCH)
