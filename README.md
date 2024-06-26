@@ -57,3 +57,18 @@ Table: drivers
 | Register_Dt | Date the delivery person registered to work with us |
 | Action      | Action to be taken with the driver [OK, FLUXO_STACK] |
 | Device_ID   | Unique key – delivery person’s device            |
+
+
+Based on what has been given, the answers to the business problems are below:
+
+# 1 - Fail by Provider
+
+![Fail by Provider](image.png)
+
+The provider which fails the most is the provider C with an index of 33%. The provider B is the second with an index of 20%.
+The bigest concern about the provider C is that even with a low quantity of sessions (9), 3 of them failed.
+
+Actions: Identify the main causes of fail in provider C. Understand if these causes are related to a fraud attempt or a problem with the provider user itself.
+
+# 2 - Fail by Provider
+a
