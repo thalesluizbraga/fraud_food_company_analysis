@@ -65,10 +65,47 @@ Based on what has been given, the answers to the business problems are below:
 
 ![Fail by Provider](image.png)
 
-The provider which fails the most is the provider C with an index of 33%. The provider B is the second with an index of 20%.
+The provider which fails the most is the provider C with a rate of 33%. The provider B is the second with a rate of 20%.
 The bigest concern about the provider C is that even with a low quantity of sessions (9), 3 of them failed.
 
 Actions: Identify the main causes of fail in provider C. Understand if these causes are related to a fraud attempt or a problem with the provider user itself.
 
-# 2 - Fail by Provider
-a
+# 2 - Fail by Driver Category
+
+![alt text](image.png)
+
+The deliver category which pursuits the biggest biometry fail rate is the bronze, with 40% of fails from the total. It's an expected behavior, considering the fact that the most of drivers are in this category, more fails can occur. The fact that this category is the is the second level of less experienced drivers is a matter to be considered as well. 
+
+Actions: Contribute with these findings to the onboard department for better understanding of the platform usage and monitoring of behavior.
+
+
+# 3 - Real Similarity  x Projected Similarity 
+
+
+Adjusting the similarity rate to > 0.8 the percentage of drivers who have match wih the platform drop from 87% to 56%, a difference of 31%.
+
+Impacts: a higher similarity rate would tend to lower the number of fraud cases. Nevertheless, it would cause a disengagement on the platform and in the worst scenario, drivers would leave it. 
+
+Actions: To test this new rate in a part of the population of drivers and follow its behavior to understand if tere will be an adoption or not to drive to forward decisions.
+
+
+# 4 - Relation Between the Number of Cancelled Orders by Biometry Status 
+
+Considering the number of orders by drivers and status, there is a relationship between the number of cancelled orders by drivers and the status of biometry. In this case, drivers with 'NOT_MATCH' status have a higher number of cancelled orders. By the statistic point of view, there is a negative correlation betwee the number of drivers to the number of cancelled orders by drivers and the number of orders to number of cancelled orders by drivers as well. Basically, the higher the number of drivers or orders, the lower will be the number of cancelled orders by drivers. 
+
+Nesse caso, entregadores com status ‘NOT_MATCH’ tem um índice maior do que os demais. Estatisticamente falando, a correlação das variáveis indica que quanto maior a quantidade de entregadores ou pedidos, menor a quantidade de pedidos cancelados por entregador. 
+
+Action: deploy this kpi and     monitor its behavior to check if there will be any uncommon behavior.
+
+
+# 5 - 
+
+ A peak of denied accesses was seen in the days 15, 16, 17 and 31. These days must be considered for further analysis to understand if it happend due to an instability on the platform or any other reason.
+
+Actions: Transform the average calculus into a moving average and then monitor its behavior to check unusual movements.
+
+
+
+Diving into a deeper analysis, from the total of 24 denied accesses in the period, 9 are related to drivers from the silver cluster (38%). However, the oldest delivers in the databaase are from begginer and bronze clusters, what is a fraud evidence. 
+
+Action: Send these users to the stack flow for a detailed individual analysis.
