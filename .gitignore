@@ -1,7 +1,7 @@
 # Created by https://www.toptal.com/developers/gitignore/api/python
 # Edit at https://www.toptal.com/developers/gitignore?templates=python
 
-Apresentação de Teste de SQL .pptx
+Apresentação de Teste de SQL.pptx
 Teste de SQL - versão2024.pdf
 
 ### Python ###
@@ -134,6 +134,8 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+.git
+
 
 # Spyder project settings
 .spyderproject
